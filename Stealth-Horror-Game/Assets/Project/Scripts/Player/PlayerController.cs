@@ -1,11 +1,14 @@
 using System;
 using UnityEngine;
 using UnityTutorial.Manager;
+using Zenject;
 
 namespace UnityTutorial.PlayerControl
 {
     public class PlayerController : MonoBehaviour
     {
+        private EventManager _eventManager;
+
         [Header("Main Settings")]
         [SerializeField] private float animBlendSpeed = 8.9f;
         [SerializeField] private Transform CameraRoot;
@@ -31,6 +34,7 @@ namespace UnityTutorial.PlayerControl
 
         // Состояния
         private bool _grounded = false;
+        private bool _canMove = true;
 
         // Переменные камеры
         private float _xRotation;
@@ -49,7 +53,26 @@ namespace UnityTutorial.PlayerControl
         public float TurnThreshold => turnThreshold;
         public float TurnSmoothTime => turnSmoothTime;
         public bool IsGrounded => _grounded;
+        public bool CanMove => _canMove;
         public InputManager Input => _inputManager;
+
+        [Inject]
+        public void Construct(EventManager eventManager)
+        {
+            _eventManager = eventManager;
+        }
+
+        private void OnEnable()
+        {
+            _eventManager.OnTalkingStarted += StopMove;
+            _eventManager.OnTalkingEnded += StartMove;
+        }
+
+        private void OnDisable()
+        {
+            _eventManager.OnTalkingStarted -= StopMove;
+            _eventManager.OnTalkingEnded -= StartMove;
+        }
 
         private void Start()
         {
@@ -65,6 +88,18 @@ namespace UnityTutorial.PlayerControl
             _playerInteractionManager = GetComponent<PlayerInteractionManager>();
         }
 
+        private void StopMove()
+        {
+            _playerAnimatorManager.StopMovement();
+            _playerRigidbody.linearVelocity = Vector3.zero;
+            _canMove = false;
+        }
+
+        private void StartMove()
+        {
+            _canMove = true;
+        }
+
         private void ResetCamera()
         {
             // Инициализируем плавные значения
@@ -77,6 +112,9 @@ namespace UnityTutorial.PlayerControl
 
         private void FixedUpdate()
         {
+            if (!_canMove)
+                return;
+
             SampleGround();
             Move();
             HandleJump();
@@ -86,6 +124,9 @@ namespace UnityTutorial.PlayerControl
 
         private void Update()
         {
+            if (!_canMove)
+                return;
+
             HandleCamera();
             _playerAnimatorManager.UpdateAnimationParameters();
         }

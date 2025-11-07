@@ -1,6 +1,10 @@
+using PixelCrushers.DialogueSystem;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
+using UnityEngine.Timeline;
+using UnityTutorial.PlayerControl;
 using Zenject;
 
 /// <summary>
@@ -12,16 +16,22 @@ public class InteractableItem : MonoBehaviour, IInteractable
     private Outline _outline;
     private AudioSource _audioSource;
     private GameScenario _gameScenario;
+    private PlayerController _playerController;
+    private EventManager _eventManager;
 
     [SerializeField] private string commentText;
     [SerializeField] private string miniGameScene;
+    [SerializeField] private string conversation;
+    [SerializeField] private CutsceneData cutscene;
 
     private bool _canBeInteracted = true;
 
     [Inject]
-    public void Construct(GameScenario gameScenario)
+    public void Construct(GameScenario gameScenario, PlayerController playerController, EventManager eventManager)
     {
         _gameScenario = gameScenario;
+        _playerController = playerController;
+        _eventManager = eventManager;
     }
 
     private void Awake()
@@ -70,7 +80,7 @@ public class InteractableItem : MonoBehaviour, IInteractable
     private void ResetFlags()
     {
         StopAllCoroutines();
-        _canBeInteracted = true;
+        SetCanBeInteracted(false);
     }
 
     public void Interact()
@@ -86,7 +96,16 @@ public class InteractableItem : MonoBehaviour, IInteractable
 
         OnLoseFocus();
 
-        if (miniGameScene != "")
+        if (cutscene != null)
+        {
+            CutsceneManager.Instance.PlayNewCutscene(cutscene);
+        }
+        else if (!string.IsNullOrEmpty(conversation))
+        {
+            DialogueManager.StartConversation(conversation, _playerController.transform, transform);
+            _eventManager.ReportTalkingStarted();
+        }
+        else if (!string.IsNullOrEmpty(miniGameScene))
         {
             StartCoroutine(SwitchCanBeInteracted(5));
             // Запускаем переход
@@ -98,6 +117,14 @@ public class InteractableItem : MonoBehaviour, IInteractable
         else
         {
             InteractionPromptManager.Instance.ShowComment(commentText);
+        }
+    }
+
+    public void OnInteractionEnded()
+    {
+        if (!string.IsNullOrEmpty(conversation))
+        {
+            _eventManager.ReportTalkingEnded();
         }
     }
 }

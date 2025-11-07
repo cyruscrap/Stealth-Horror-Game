@@ -13555,7 +13555,7 @@ MonoBehaviour:
   tableOfContentsCollider: {fileID: 1303797807}
   pageTouchPadLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 31
 --- !u!4 &2033642788
 Transform:
   m_ObjectHideFlags: 0

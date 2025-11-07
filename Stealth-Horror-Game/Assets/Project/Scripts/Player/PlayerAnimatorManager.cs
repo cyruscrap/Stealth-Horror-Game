@@ -52,9 +52,14 @@ namespace UnityTutorial.PlayerControl
             _isMovingHash = Animator.StringToHash("IsMoving");
         }
 
+        public void StopMovement()
+        {
+            _animator.SetBool(_isMovingHash, false);
+        }
+
         public void UpdateAnimationParameters()
         {
-            if (_inputManager.Move != Vector2.zero)
+            if (_playerController.CanMove && (_inputManager.Move != Vector2.zero))
             {
                 float animationMultiplier = 0.5f; // ױמהüבא
 
@@ -86,7 +91,7 @@ namespace UnityTutorial.PlayerControl
         {
             if (!_playerController.IsGrounded) return;
 
-            bool isMoving = _inputManager.Move != Vector2.zero;
+            bool isMoving = _playerController.CanMove && (_inputManager.Move != Vector2.zero);
             _animator.SetBool(_isMovingHash, isMoving);
 
             if (isMoving)

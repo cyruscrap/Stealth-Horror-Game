@@ -825,7 +825,7 @@ PlayerSettings:
     PS5: TextMeshPro
     QNX: TextMeshPro
     ReservedCFE: TextMeshPro
-    Standalone: INVECTOR_BASIC;TextMeshPro
+    Standalone: INVECTOR_BASIC;TextMeshPro;TMP_PRESENT
     VisionOS: TextMeshPro
     WebGL: TextMeshPro
     XboxOne: TextMeshPro
