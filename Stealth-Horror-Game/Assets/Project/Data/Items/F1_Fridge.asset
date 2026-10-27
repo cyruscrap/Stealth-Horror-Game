@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 844f8b594610d354f98a0e77f3ee730e, type: 3}
+  m_Name: F1_Fridge
+  m_EditorClassIdentifier: 
+  tag: 0
+  objectID: F1_Fridge
+  prefab: {fileID: 0}
+  phaseEntries:
+  - phase: {fileID: 11400000, guid: c02921c92d4df5946bc943f24b08b839, type: 2}
+    entries:
+    - entryID: D1_F1_Fridge_1
+      commentTextKey: D1_F1_Fridge_1
+      miniGameScene: 
+      conversation: 
+      cutscene: {fileID: 0}
+      animationTrigger: 
+      audioClip: {fileID: 0}
+      setUniversalCommentKey: 
+      resetUniversalState: 0
+      advanceToNextPhase: 0
+      priority: 0
+      oneShot: 0
+      conditionGroups: []
+  - phase: {fileID: 11400000, guid: 6dca089dafe21bf4faf0e6526f3d9add, type: 2}
+    entries:
+    - entryID: N1_F1_Fridge_1
+      commentTextKey: N1_F1_Fridge_1
+      miniGameScene: 
+      conversation: 
+      cutscene: {fileID: 0}
+      animationTrigger: 
+      audioClip: {fileID: 0}
+      setUniversalCommentKey: 
+      resetUniversalState: 0
+      advanceToNextPhase: 0
+      priority: 0
+      oneShot: 0
+      conditionGroups: []

@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3db3d81cdc40d614394508e21d62bb3f, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 3db3d81cdc40d614394508e21d62bb3f, type: 3}
       propertyPath: m_Controller
       value: 
@@ -213,21 +217,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animBlendSpeed: 8.9
   CameraRoot: {fileID: 6203983733062176644}
+  CameraRootNoShake: {fileID: 0}
   Camera: {fileID: 0}
   CameraOffset: {x: 0, y: 0.1, z: 0.06}
+  runCameraOffset: {x: 0, y: 0, z: 0.15}
   UpperLimit: -40
   BottomLimit: 70
-  MouseSensitivity: 20
-  JumpFactor: 148
-  Dis2Ground: 0.9
-  GroundCheck:
-    serializedVersion: 2
-    m_Bits: 1
-  AirResistance: 0.8
+  mouseSensitivity: 0.5
+  invertXAxis: 0
+  invertYAxis: 0
+  cameraShake: 1
   turnThreshold: 0.5
   turnSmoothTime: 0.1
-  _walkSpeed: 0.5
-  _runSpeed: 1
+  gravity: -9.81
+  jumpHeight: 1.5
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
+  walkSpeed: 2
+  runSpeed: 4
+  crouchSpeed: 1.5
+  globalSpeedMultiplier: 1
+  rootMotionSmoothing: 0.1
+  manualMoveSpeed: 0.3
+  manualMoveFactor: 0.2
 --- !u!114 &4612294171916824676
 MonoBehaviour:
   m_ObjectHideFlags: 0

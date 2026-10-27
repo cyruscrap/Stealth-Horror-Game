@@ -7,6 +7,7 @@ public class PlayerInteractionManager : MonoBehaviour
     private InputManager inputManager;
     [SerializeField] private Camera playerCamera;
     [SerializeField] private float interactionDistance = 3f;
+    public bool showOutline = true;
 
     [Tooltip("Радиус луча для обнаружения. Увеличивает область захвата.")]
     [SerializeField] private float interactionRadius = 0.5f;
@@ -51,7 +52,7 @@ public class PlayerInteractionManager : MonoBehaviour
             {
                 _focusedInteractable?.OnLoseFocus(); // Сообщаем старому объекту, что он потерял фокус
                 _focusedInteractable = newInteractable;
-                _focusedInteractable?.OnFocus(); // Сообщаем новому, что он получил фокус
+                _focusedInteractable?.OnFocus(showOutline); // Сообщаем новому, что он получил фокус
             }
 
             // Логика взаимодействия

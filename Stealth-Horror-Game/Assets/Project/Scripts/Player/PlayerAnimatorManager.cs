@@ -55,6 +55,7 @@ namespace UnityTutorial.PlayerControl
         public void StopMovement()
         {
             _animator.SetBool(_isMovingHash, false);
+            _animator.SetFloat(_turnHash, 0);
         }
 
         public void UpdateAnimationParameters()

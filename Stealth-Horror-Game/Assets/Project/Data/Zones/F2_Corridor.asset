@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d9a151ac543ef943ab7e0f9cccd08de, type: 3}
+  m_Name: F2_Corridor
+  m_EditorClassIdentifier: 
+  zoneID: F2_Corridor
+  eventType: 0
+  phaseEntries:
+  - phase: {fileID: 11400000, guid: c02921c92d4df5946bc943f24b08b839, type: 2}
+    entries:
+    - commentID: D1_F2_Corridor_1
+      textKey: D1_F2_Corridor_1
+      audioClip: {fileID: 0}
+      oneShot: 1
+      priority: 0
+      conditionGroups: []
+    - commentID: D1_Ann_1
+      textKey: D1_Ann_1
+      audioClip: {fileID: 0}
+      oneShot: 1
+      priority: 1
+      conditionGroups:
+      - mode: 0
+        conditions:
+        - type: 0
+          stringParams:
+          - F1_Corridor
+          intParam: 1
+          phaseParam: 0
+    - commentID: D1_F2_Corridor_2
+      textKey: D1_F2_Corridor_2
+      audioClip: {fileID: 0}
+      oneShot: 1
+      priority: 2
+      conditionGroups:
+      - mode: 0
+        conditions:
+        - type: 1
+          stringParams:
+          - F2_Bedroom_Dad_Window_1
+          - F2_Bedroom_Dad_Window_2
+          intParam: 1
+          phaseParam: 0
+  - phase: {fileID: 11400000, guid: 6dca089dafe21bf4faf0e6526f3d9add, type: 2}
+    entries:
+    - commentID: N1_F2_Corridor_1
+      textKey: 
+      audioClip: {fileID: 8300000, guid: 11a5b0cedf1c27f4da837cacab3448b9, type: 3}
+      oneShot: 1
+      priority: 0
+      conditionGroups: []
+    - commentID: D1_Ann_1
+      textKey: D1_Ann_1
+      audioClip: {fileID: 0}
+      oneShot: 1
+      priority: 1
+      conditionGroups:
+      - mode: 0
+        conditions:
+        - type: 0
+          stringParams:
+          - F1_Corridor
+          intParam: 1
+          phaseParam: 0
+    - commentID: D1_F2_Corridor_2
+      textKey: D1_F2_Corridor_2
+      audioClip: {fileID: 0}
+      oneShot: 1
+      priority: 2
+      conditionGroups:
+      - mode: 0
+        conditions:
+        - type: 1
+          stringParams:
+          - F2_Bedroom_Dad_Window_1
+          - F2_Bedroom_Dad_Window_2
+          intParam: 1
+          phaseParam: 0

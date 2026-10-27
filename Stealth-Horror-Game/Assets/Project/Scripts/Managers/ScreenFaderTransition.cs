@@ -25,7 +25,7 @@ public class ScreenFaderTransition : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            var currentColor = fadeImage.color;
+            Color currentColor = fadeImage.color;
             fadeImage.color = new Color(currentColor.r, currentColor.g, currentColor.b, 1f);
         }
     }
@@ -33,6 +33,18 @@ public class ScreenFaderTransition : MonoBehaviour
     private void Start()
     {
         FadeFromBlack();
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        Time.timeScale = 1;
+
+        FadeFromBlack();
+    }
+
+    public void FadeToBlackSimple()
+    {
+        StartCoroutine(FadeRoutine(1f, null, afterFade: null));
     }
 
     public Coroutine FadeToBlack(string sceneName = null, LoadSceneMode mode = LoadSceneMode.Single, Action afterFade = null)
@@ -47,10 +59,10 @@ public class ScreenFaderTransition : MonoBehaviour
 
     private IEnumerator FadeRoutine(float targetAlpha, string sceneName, LoadSceneMode mode = LoadSceneMode.Single, Action afterFade = null)
     {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSecondsRealtime(.5f);
 
-        var currentColor = fadeImage.color;
-        var startAlpha = currentColor.a;
+        Color currentColor = fadeImage.color;
+        float startAlpha = currentColor.a;
         float time = 0;
 
         // Включаем картинку перед началом анимации
@@ -59,7 +71,7 @@ public class ScreenFaderTransition : MonoBehaviour
         while (time < fadeDuration)
         {
             time += Time.unscaledDeltaTime;
-            var newAlpha = Mathf.Lerp(startAlpha, targetAlpha, time / fadeDuration);
+            float newAlpha = Mathf.Lerp(startAlpha, targetAlpha, time / fadeDuration);
             fadeImage.color = new Color(currentColor.r, currentColor.g, currentColor.b, newAlpha);
             yield return null;
         }

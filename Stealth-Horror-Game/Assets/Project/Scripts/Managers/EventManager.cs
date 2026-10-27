@@ -5,13 +5,13 @@ using System;
 /// </summary>
 public class EventManager
 {
-    // Событие начала нового дня
-    public event Action<DayData> OnDayStart;
-    public void ReportDayStart(DayData data) => OnDayStart?.Invoke(data);
+    // Событие начала нового дня или ночи
+    public event Action<DayData> OnPhaseStart;
+    public void ReportPhaseStart(DayData data) => OnPhaseStart?.Invoke(data);
 
-    // Событие окончания дня
-    public event Action<DayData> OnDayEnd;
-    public void ReportDayEnd(DayData data) => OnDayEnd?.Invoke(data);
+    // Событие окончания дня или ночи
+    public event Action<DayData> OnPhaseEnd;
+    public void ReportPhaseEnd(DayData data) => OnPhaseEnd?.Invoke(data);
 
     // Событие завершения мини-игры. Передаем ItemData, чтобы знать, какой предмет засчитать.
     public event Action OnMiniGameCompleted;

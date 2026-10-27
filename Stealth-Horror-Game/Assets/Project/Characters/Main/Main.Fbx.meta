@@ -139,14 +139,6 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: CC_Base_JawRoot
-      humanName: Jaw
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
     - boneName: CC_Base_L_Index3
       humanName: Left Index Distal
       limit:
@@ -555,6 +547,14 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
+    - boneName: CC_Base_JawRoot
+      humanName: Jaw
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
     skeleton:
     - name: Main(Clone)
       parentName: 
@@ -649,7 +649,7 @@ ModelImporter:
     - name: CC_Base_L_BigToe1
       parentName: CC_Base_L_ToeBase
       position: {x: -0.031364515, y: 0.019094486, z: 0.001038617}
-      rotation: {x: 0.020285482, y: 0.0007827489, z: -0.004698836, w: 0.99978286}
+      rotation: {x: 0.020285483, y: 0.0007827489, z: -0.0046988362, w: 0.99978286}
       scale: {x: 0.9999998, y: 0.9999999, z: 1.0000001}
     - name: CC_Base_L_IndexToe1
       parentName: CC_Base_L_ToeBase
@@ -819,7 +819,7 @@ ModelImporter:
     - name: CC_Base_L_Index1
       parentName: CC_Base_L_Hand
       position: {x: 0.0024105692, y: 0.076159015, z: 0.029694995}
-      rotation: {x: 0.004353584, y: 0.0036405977, z: -0.016930975, w: 0.99984056}
+      rotation: {x: 0.0043535843, y: 0.0036405977, z: -0.016930977, w: 0.99984056}
       scale: {x: 1, y: 1, z: 1.0000001}
     - name: CC_Base_L_Index2
       parentName: CC_Base_L_Index1

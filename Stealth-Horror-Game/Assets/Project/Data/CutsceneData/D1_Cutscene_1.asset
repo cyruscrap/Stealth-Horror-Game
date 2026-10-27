@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d13fae02bf928d4189b4551a0eaca60, type: 3}
+  m_Name: D1_Cutscene_1
+  m_EditorClassIdentifier: 
+  cutsceneID: D1_Cutscene_1
+  timelineAsset: {fileID: 11400000, guid: 2751084424c5c27469b80999d6d7f177, type: 2}
+  textKeyAfterCutscene: D1_F2_Room_2
+  subtitleText:
+  - time: 7
+    textKey: Dialogue System/Conversation/D1_Dialogue_Sister/Entry/1/Sister/Dialogue
+      Text
+    audioClipKey: 
+  - time: 2.5
+    textKey: Dialogue System/Conversation/D1_Dialogue_Sister/Entry/2/Ann/Dialogue
+      Text
+    audioClipKey: 
+  - time: 3
+    textKey: Dialogue System/Conversation/D1_Dialogue_Sister/Entry/3/Sister/Dialogue
+      Text
+    audioClipKey: 
+  - time: 2.5
+    textKey: D1_Dad_1
+    audioClipKey: 

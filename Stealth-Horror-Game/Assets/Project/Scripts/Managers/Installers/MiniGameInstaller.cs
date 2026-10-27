@@ -12,5 +12,7 @@ public class MiniGameInstaller : MonoInstaller
             Debug.LogWarning("MiniGameInstaller: EventManager не найден, создаю заглушку для совместимости");
             Container.Bind<EventManager>().AsSingle();
         }
+
+        Container.Bind<IPageStateService>().To<PageStateService>().AsSingle();
     }
 }

@@ -16,34 +16,37 @@ public class ItemSpawnInfo
     public Vector3 scale = Vector3.one;
 }
 
+public enum PhaseType { Day, Night }
+
 /// <summary>
 /// Хранит всю конфигурацию для одного игрового дня.
 /// </summary>
-[CreateAssetMenu(fileName = "DayData_", menuName = "StealthHorrorGame/DayData")]
+[CreateAssetMenu(fileName = "PhaseData_", menuName = "StealthHorrorGame/PhaseData")]
 public class DayData : ScriptableObject
 {
-    public string dayId;
+    public string phaseID;
+    public PhaseType phaseType = PhaseType.Day;
+    [Header("Chapter Number")]
+    [Tooltip("Номер дня и ночи")]
+    [Range(1, 12)]
+    public int chapterNumber = 1;
 
-    [Header("Day Number")]
-    [Tooltip("Номер дня (1-5)")]
-    [Range(1, 5)]
-    public int dayNumber = 1;
+    [Header("Lighting")]
+    public LightingPreset lightingPreset;
 
     [Header("Предметы и их расположение")]
     public List<ItemSpawnInfo> itemsToSpawn;
 
+    [Header("Страницы дневника")]
+    [Tooltip("Общее количество страниц дневника, доступных на этот день. Включая уже напечатанные ранее.")]
+    [Range(1, 40)]
+    public int diaryTotalPages = 2;
+    [Tooltip("Какие страницы должны быть напечатаны именно в этот день (первый раз).")]
+    public List<int> diaryPagesToPrint = new List<int>();
+
     [Header("Эмбиент")]
     public AudioClip backgroundMusic;
     [Range(0f, 10f)] public float loopDelay;
-
-    [Header("Звуки переходов")]
-    public AudioClip goOutsideSound;
-    public AudioClip goInsideSound;
-    public AudioClip transitionSound;
-
-    [Header("Настройки звонка и диалогов")]
-    public string ringConversationMark;
-    public AudioClip ringAudio;
 
     [Header("Позиция и поворот игрока")]
     [Tooltip("Стартовая позиция игрока для этого дня")]

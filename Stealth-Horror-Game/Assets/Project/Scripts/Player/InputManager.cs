@@ -13,6 +13,9 @@ namespace UnityTutorial.Manager
         public bool Jump {get; private set;}
         public bool Crouch {get; private set;}
         public bool Interact { get; private set; }
+        public bool UI { get; private set; }
+
+        public bool UIPressedThisFrame => _uiAction != null && _uiAction.WasPressedThisFrame();
 
         private InputActionMap _currentMap;
         private InputAction _moveAction;
@@ -21,10 +24,10 @@ namespace UnityTutorial.Manager
         private InputAction _jumpAction;
         private InputAction _crouchAction;
         private InputAction _interactAction;
+        private InputAction _uiAction;
 
         private void Awake() 
         {
-            HideCursor();
             _currentMap = PlayerInput.currentActionMap;
             _moveAction = _currentMap.FindAction("Move");
             _lookAction = _currentMap.FindAction("Look");
@@ -32,6 +35,7 @@ namespace UnityTutorial.Manager
             _jumpAction = _currentMap.FindAction("Jump");
             _crouchAction = _currentMap.FindAction("Crouch");
             _interactAction = _currentMap.FindAction("Interact");
+            _uiAction = _currentMap.FindAction("UI");
 
             _moveAction.performed += onMove;
             _lookAction.performed += onLook;
@@ -39,6 +43,7 @@ namespace UnityTutorial.Manager
             _jumpAction.performed += onJump;
             _crouchAction.started += onCrouch;
             _interactAction.performed += onInteract;
+            _uiAction.performed += onUI;
 
             _moveAction.canceled += onMove;
             _lookAction.canceled += onLook;
@@ -46,12 +51,7 @@ namespace UnityTutorial.Manager
             _jumpAction.canceled += onJump;
             _crouchAction.canceled += onCrouch;
             _interactAction.canceled += onInteract;
-        }
-
-        private void HideCursor()
-        {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            _uiAction.canceled += onUI;
         }
 
         private void onMove(InputAction.CallbackContext context)
@@ -77,6 +77,10 @@ namespace UnityTutorial.Manager
         private void onInteract(InputAction.CallbackContext context)
         {
             Interact = context.ReadValueAsButton();
+        }
+        private void onUI(InputAction.CallbackContext context)
+        {
+            UI = context.ReadValueAsButton();
         }
 
         private void OnEnable() 

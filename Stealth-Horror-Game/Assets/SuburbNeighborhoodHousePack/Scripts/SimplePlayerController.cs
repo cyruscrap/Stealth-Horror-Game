@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Suburb
 {
@@ -25,9 +23,8 @@ namespace Suburb
         {
             characterController = GetComponent<CharacterController>();
 
-            Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         void Update()

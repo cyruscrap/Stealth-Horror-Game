@@ -1,27 +1,31 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public enum ItemTag
+public enum ItemTag { Other, Diary, Phone, Stove }
+
+[System.Serializable]
+public class PhaseEntries
 {
-    Diary,
-    Phone,
-    Stove
+    public DayData phase;
+    public List<InteractionEntry> entries = new List<InteractionEntry>();
 }
 
-/// <summary>
-/// Хранит всю информацию о конкретном предмете: его вид, имя и тип (тег).
-/// </summary>
 [CreateAssetMenu(fileName = "Item_", menuName = "StealthHorrorGame/ItemData")]
 public class ItemData : ScriptableObject
 {
-    [Tooltip("Тег для идентификации типа предмета (например, Key, Document)")]
+    [Header("Identity")]
     public ItemTag tag;
-
-    [Tooltip("Имя, которое будет отображаться в UI")]
-    public string displayName = "Новый предмет";
-
-    [Tooltip("Ключ таблицы I2 Localization")]
-    public string localizationKey;
-
-    [Tooltip("Префаб 3D-модели, который будет создан в сцене")]
+    public string objectID;
     public GameObject prefab;
+
+    [Header("Interactions by phase")]
+    [Tooltip("Для каждой фазы — свой список записей. Если текущей фазы тут нет — объект бездействует.")]
+    public List<PhaseEntries> phaseEntries = new List<PhaseEntries>();
+
+    public List<InteractionEntry> GetEntriesFor(DayData phase)
+    {
+        foreach (var pe in phaseEntries)
+            if (pe != null && pe.phase == phase) return pe.entries;
+        return null;
+    }
 }
