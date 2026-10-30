@@ -108,6 +108,8 @@ public class MainMenu : MonoBehaviour
         newData.SetDefaultValues();
         _worldSaveGameManager.currentCharacterSaveData = newData;
 
+        _worldSaveGameManager.SaveGame(1, PhaseType.Day);
+
         PlayerPrefsExtentions.SetBool("isNewGame", true);
 
         // Запускаем анимацию загрузки и переход на игровую сцену

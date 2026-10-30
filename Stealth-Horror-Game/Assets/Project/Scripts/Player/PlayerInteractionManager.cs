@@ -19,6 +19,14 @@ public class PlayerInteractionManager : MonoBehaviour
         inputManager = GetComponent<InputManager>();
     }
 
+    private void Start()
+    {
+        // Сбрасываем фокус при старте
+        _focusedInteractable = null;
+        if (InteractionPromptManager.Instance != null)
+            InteractionPromptManager.Instance.HideHint();
+    }
+
     void Update()
     {
         // Создаем луч из центра камеры, как и раньше

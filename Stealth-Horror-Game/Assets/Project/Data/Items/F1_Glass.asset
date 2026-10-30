@@ -20,14 +20,15 @@ MonoBehaviour:
     entries:
     - entryID: N1_F1_Glass_1
       commentTextKey: N1_F1_Glass_1
+      commentTextSequence: []
       miniGameScene: 
       conversation: 
-      cutscene: {fileID: 0}
       animationTrigger: 
+      cutscene: {fileID: 0}
       audioClip: {fileID: 0}
       setUniversalCommentKey: 
       resetUniversalState: 0
       advanceToNextPhase: 0
       priority: 0
-      oneShot: 0
+      oneShot: 1
       conditionGroups: []

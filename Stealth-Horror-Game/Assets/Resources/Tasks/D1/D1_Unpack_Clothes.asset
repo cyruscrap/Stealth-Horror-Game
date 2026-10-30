@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cfb1591c0acba044bf557fde3144a29, type: 3}
+  m_Name: D1_Unpack_Clothes
+  m_EditorClassIdentifier: 
+  taskID: D1_Unpack_Clothes
+  taskTextKey: D1_Unpack_Clothes
+  showConditions:
+  - mode: 0
+    conditions:
+    - type: 0
+      stringParams:
+      - F2_Room
+      intParam: 1
+      phaseParam: 0
+    - type: 5
+      stringParams:
+      - D1_Cbutscene_1
+      intParam: 1
+      phaseParam: 0
+  completeConditions:
+  - mode: 0
+    conditions:
+    - type: 1
+      stringParams:
+      - Boxes_Clothes
+      intParam: 1
+      phaseParam: 0

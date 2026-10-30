@@ -1,3 +1,4 @@
+using NUnit.Framework.Internal;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -99,7 +100,7 @@ public class ZoneTrigger : MonoBehaviour
         CommentEntry bestEntry = null;
         int bestPriority = int.MinValue;
 
-        foreach (var entry in entries)
+        foreach (CommentEntry entry in entries)
         {
             if (entry == null) continue;
             if (!_evaluator.AllGroupsMet(entry.conditionGroups)) continue;
@@ -114,7 +115,7 @@ public class ZoneTrigger : MonoBehaviour
 
         if (bestEntry == null) return;
 
-        string effectiveId = GetEffectiveId(bestEntry);
+        string effectiveId = GetEffectiveID(bestEntry);
 
         // 1) Пометить одноразовую запись как показанную
         if (bestEntry.oneShot)
@@ -128,7 +129,7 @@ public class ZoneTrigger : MonoBehaviour
         }
 
         // 2) Локальное действие в сцене
-        foreach (var a in actions)
+        foreach (ZoneEntryAction a in actions)
         {
             if (a.entryId == effectiveId)
             {
@@ -149,11 +150,11 @@ public class ZoneTrigger : MonoBehaviour
     private bool IsAlreadyShown(CommentEntry entry)
     {
         if (!entry.oneShot) return false;
-        string id = GetEffectiveId(entry);
+        string id = GetEffectiveID(entry);
         return _saveManager.currentCharacterSaveData.shownComments.Contains(id);
     }
 
-    private string GetEffectiveId(CommentEntry entry)
+    private string GetEffectiveID(CommentEntry entry)
     {
         if (!string.IsNullOrEmpty(entry.commentID)) return entry.commentID;
 

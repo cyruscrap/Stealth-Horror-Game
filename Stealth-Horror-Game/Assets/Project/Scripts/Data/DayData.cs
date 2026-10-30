@@ -16,7 +16,7 @@ public class ItemSpawnInfo
     public Vector3 scale = Vector3.one;
 }
 
-public enum PhaseType { Day, Night }
+public enum PhaseType { Day = 0, Night = 1, Any = -1 }
 
 /// <summary>
 /// Хранит всю конфигурацию для одного игрового дня.

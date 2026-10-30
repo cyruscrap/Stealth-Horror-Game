@@ -3,7 +3,7 @@
 //           пропуск лип-синк анимаций.
 //
 // MIT License — см. оригинал.
-
+#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
@@ -282,3 +282,4 @@ public class FixJawBoneKeyframes : EditorWindow
         animations.Clear();
     }
 }
+#endif

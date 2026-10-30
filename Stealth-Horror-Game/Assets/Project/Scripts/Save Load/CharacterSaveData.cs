@@ -46,15 +46,29 @@ public class CharacterSaveData
         shownItemInteractions = new List<string>();
         shownComments = new List<string>();
         visitedZones = new List<string>();
+        playedCutscenes = new List<string>();
         triggeredEvents = new List<string>();
         diaryPrintedSpreads = new List<int>();
     }
 
     public void SetDefaultValues()
     {
-        itemsInWorld.Clear();
-        playedCutscenes.Clear();
+        // Сбрасываем простые поля
         phaseIndex = 0;
+        playerPosition = Vector3.zero;
+        playerRotation = Vector3.zero;
+        language = "English";
+        diaryLastOpenedPage = 0;
+
+        // Очищаем все списки и словари
+        if (itemsInWorld != null) itemsInWorld.Clear();
+        if (interactedObjects != null) interactedObjects.Clear();
+        if (shownItemInteractions != null) shownItemInteractions.Clear();
+        if (shownComments != null) shownComments.Clear();
+        if (visitedZones != null) visitedZones.Clear();
+        if (playedCutscenes != null) playedCutscenes.Clear();
+        if (triggeredEvents != null) triggeredEvents.Clear();
+        if (diaryPrintedSpreads != null) diaryPrintedSpreads.Clear();
     }
 
     public void EnsureListsInitialized()
@@ -67,5 +81,8 @@ public class CharacterSaveData
         if (playedCutscenes == null) playedCutscenes = new List<string>();
         if (triggeredEvents == null) triggeredEvents = new List<string>();
         if (diaryPrintedSpreads == null) diaryPrintedSpreads = new List<int>();
+
+        // УБРАНО: diaryLastOpenedPage = 0; 
+        // (Он должен загружаться из сейва, а не сбрасываться при каждой загрузке)
     }
 }

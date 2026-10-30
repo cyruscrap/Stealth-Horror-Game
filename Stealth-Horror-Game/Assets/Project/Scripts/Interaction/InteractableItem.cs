@@ -89,12 +89,14 @@ public class InteractableItem : MonoBehaviour, IInteractable
             _interactableCenter = _interactableCollider.bounds.center;
         else
             _interactableCenter = transform.position;
+
+        if (_outline != null)
+            _outline.enabled = false;
     }
 
     private void Start()
     {
-        if (_outline != null)
-            _outline.enabled = false;
+
     }
 
     // --- Фокус ---
@@ -184,6 +186,7 @@ public class InteractableItem : MonoBehaviour, IInteractable
         if (bestEntry == null)
         {
             Debug.Log("No matching interaction entry.");
+            OnLoseFocus();
             return;
         }
 
@@ -206,7 +209,7 @@ public class InteractableItem : MonoBehaviour, IInteractable
         OnLoseFocus();
 
         // Помечаем одноразовую запись как показанную
-        string effectiveId = GetEffectiveId(bestEntry);
+        string effectiveId = GetEffectiveID(bestEntry);
         if (bestEntry.oneShot)
         {
             if (!_saveManager.currentCharacterSaveData.shownItemInteractions.Contains(effectiveId))
@@ -295,11 +298,11 @@ public class InteractableItem : MonoBehaviour, IInteractable
     private bool IsAlreadyShown(InteractionEntry entry)
     {
         if (!entry.oneShot) return false;
-        string id = GetEffectiveId(entry);
+        string id = GetEffectiveID(entry);
         return _saveManager.currentCharacterSaveData.shownItemInteractions.Contains(id);
     }
 
-    private string GetEffectiveId(InteractionEntry entry)
+    private string GetEffectiveID(InteractionEntry entry)
     {
         if (!string.IsNullOrEmpty(entry.entryID)) return entry.entryID;
 

@@ -19,6 +19,7 @@ MonoBehaviour:
     entries:
     - commentID: D1_F1_Bathroom_1
       textKey: D1_F1_Bathroom_1
+      commentTextSequence: []
       audioClip: {fileID: 0}
       oneShot: 1
       priority: 0

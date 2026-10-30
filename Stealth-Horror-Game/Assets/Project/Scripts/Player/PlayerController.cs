@@ -131,6 +131,7 @@ namespace UnityTutorial.PlayerControl
         private void Start()
         {
             InitializeComponents();
+            StartMove();
         }
 
         private void InitializeComponents()

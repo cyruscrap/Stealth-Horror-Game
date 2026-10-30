@@ -20,12 +20,6 @@ public class PostProcessingManager
 
         // Принудительно берем ИМЕННО .profile. Это создает экземпляр-клон в рантайме.
         VolumeProfile runtimeProfile = _globalVolume.profile;
-
-        if (runtimeProfile.TryGet(out _liftGammaGain))
-            Debug.Log("[PostProcessingManager] LiftGammaGain успешно привязан к рантайм-профилю.");
-
-        if (runtimeProfile.TryGet(out _motionBlur))
-            Debug.Log("[PostProcessingManager] MotionBlur успешно привязан к рантайм-профилю.");
     }
 
     public void SetGamma(float gammaValue)

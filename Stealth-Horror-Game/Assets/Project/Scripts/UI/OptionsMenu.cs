@@ -37,19 +37,21 @@ public class OptionsMenu : MonoBehaviour
 
     private void OnLevelWasLoaded()
     {
+        PlayerPrefs.SetInt("UnitySelectMonitor", 0);
+
         if (_worldSaveGameManager.CheckIfSaveFileExists() || PlayerPrefs.HasKey("IsInitialized"))
         {
             PlayerPrefs.SetInt("IsInitialized", 1);
 
-            mouseSensivity.value = PlayerPrefs.GetFloat("MouseSensivity");
+            mouseSensivity.value = PlayerPrefs.GetFloat("MouseSensivity", mouseSensivity.maxValue / 2);
             invertXAxis.isOn = PlayerPrefsExtentions.GetBool("InvertXAxis");
             invertYAxis.isOn = PlayerPrefsExtentions.GetBool("InvertYAxis");
 
-            subtitles.isOn = PlayerPrefsExtentions.GetBool("Subtitles");
-            interactableHighlights.isOn = PlayerPrefsExtentions.GetBool("InteractableHighlights");
+            subtitles.isOn = PlayerPrefsExtentions.GetBool("Subtitles", true);
+            interactableHighlights.isOn = PlayerPrefsExtentions.GetBool("InteractableHighlights", true);
             readingSpeed.value = PlayerPrefs.GetFloat("ReadingSpeed");
-
-            cameraShake.isOn = PlayerPrefsExtentions.GetBool("CameraShake");
+            
+            cameraShake.isOn = PlayerPrefsExtentions.GetBool("CameraShake", true);
             motionBlur.isOn = PlayerPrefsExtentions.GetBool("MotionBlur");
             gamma.value = PlayerPrefs.GetFloat("Gamma");
 
@@ -61,7 +63,7 @@ public class OptionsMenu : MonoBehaviour
         {
             // Default Values
 
-            mouseSensivity.value = musicVolume.maxValue / 2;
+            mouseSensivity.value = mouseSensivity.maxValue / 2;
             PlayerPrefs.SetFloat("MouseSensivity", mouseSensivity.value);
 
             invertXAxis.isOn = false;

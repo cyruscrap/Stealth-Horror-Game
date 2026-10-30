@@ -19,6 +19,8 @@ public class InteractionCondition
     [Tooltip("Список ID: для ZoneVisited — одна зона, для InteractedWithAny — несколько")]
     public List<string> stringParams = new List<string>();
 
-    public int intParam;         // для ChapterNumber
-    public PhaseType phaseParam; // для PhaseType
+    [Tooltip("Если 0, глава не проверяется")]
+    public int intParam = 0;         // для ChapterNumber
+    [Tooltip("Если Any, фаза не проверяется")]
+    public PhaseType phaseParam = PhaseType.Any; // для PhaseType
 }

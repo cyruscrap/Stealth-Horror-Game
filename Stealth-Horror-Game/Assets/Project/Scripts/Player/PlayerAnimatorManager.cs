@@ -56,6 +56,8 @@ namespace UnityTutorial.PlayerControl
         {
             _animator.SetBool(_isMovingHash, false);
             _animator.SetFloat(_turnHash, 0);
+            _animator.SetFloat(_xVelHash, 0);
+            _animator.SetFloat(_yVelHash, 0);
         }
 
         public void UpdateAnimationParameters()

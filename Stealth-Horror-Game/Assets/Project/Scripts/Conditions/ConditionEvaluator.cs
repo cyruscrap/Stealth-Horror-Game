@@ -42,36 +42,54 @@ public class ConditionEvaluator
         if (c == null) return false;
         var data = _save.currentCharacterSaveData;
 
+        bool typeMet = false;
+
+        // 1. ѕровер€ем основной тип услови€
         switch (c.type)
         {
             case ConditionType.ZoneVisited:
                 foreach (var id in c.stringParams)
-                    if (data.visitedZones.Contains(id)) return true;
-                return false;
+                    if (data.visitedZones.Contains(id)) { typeMet = true; break; }
+                break;
 
             case ConditionType.InteractedWithAny:
                 foreach (var id in c.stringParams)
-                    if (data.interactedObjects.Contains(id)) return true;
-                return false;
-
-            case ConditionType.ChapterNumber:
-                return _scenario.GetCurrentChapterNumber() == c.intParam;
-
-            case ConditionType.PhaseType:
-                return _scenario.GetCurrentPhaseType() == c.phaseParam;
-
-            case ConditionType.CutscenePlayed:
-                foreach (var id in c.stringParams)
-                    if (data.playedCutscenes.Contains(id)) return true;
-                return false;
+                    if (data.interactedObjects.Contains(id)) { typeMet = true; break; }
+                break;
 
             case ConditionType.HasTriggeredEvent:
                 foreach (var id in c.stringParams)
-                    if (data.triggeredEvents.Contains(id)) return true;
-                return false;
+                    if (data.triggeredEvents.Contains(id)) { typeMet = true; break; }
+                break;
 
-            default:
-                return false;
+            case ConditionType.CutscenePlayed:
+                foreach (var id in c.stringParams)
+                    if (data.playedCutscenes.Contains(id)) { typeMet = true; break; }
+                break;
+
+            case ConditionType.ChapterNumber:
+                // ≈сли это €вное условие на главу, провер€ем сразу и выходим
+                return _scenario.GetCurrentChapterNumber() == c.intParam;
+
+            case ConditionType.PhaseType:
+                // ≈сли это €вное условие на фазу, провер€ем сразу и выходим
+                return _scenario.GetCurrentPhaseType() == c.phaseParam;
         }
+
+        if (!typeMet) return false; // ≈сли тип не совпал (например, зона не посещена) - дальше не идем
+
+        // 2. ѕровер€ем дополнительную главу (если intParam > 0)
+        if (c.intParam > 0)
+        {
+            if (_scenario.GetCurrentChapterNumber() != c.intParam) return false;
+        }
+
+        // 3. ѕровер€ем дополнительную фазу (если phaseParam != Any)
+        if (c.phaseParam != PhaseType.Any)
+        {
+            if (_scenario.GetCurrentPhaseType() != c.phaseParam) return false;
+        }
+
+        return true;
     }
 }

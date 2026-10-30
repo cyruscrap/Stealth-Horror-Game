@@ -14,8 +14,6 @@ public class PlayerUIManager : MonoBehaviour
 
     private GameObject _mainMenuHolder;
 
-    [SerializeField] private GameObject taskListView;
-
     private bool isUIActive = false;
 
     [Inject]
@@ -68,7 +66,7 @@ public class PlayerUIManager : MonoBehaviour
         }
     }
 
-    public void HideTaskListView() { taskListView.gameObject.SetActive(false); }
+    public void FadeToBlack() { ScreenFaderTransition.Instance.FadeToBlackSimple(); }
 
     public void ShowGameOverMenu()
     {

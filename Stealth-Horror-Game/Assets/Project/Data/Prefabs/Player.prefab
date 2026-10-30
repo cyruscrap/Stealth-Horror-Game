@@ -174,46 +174,6 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 3db3d81cdc40d614394508e21d62bb3f, type: 3}
   m_PrefabInstance: {fileID: 8079017323400081856}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &3082246360902130481 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6546045621293476593, guid: 3db3d81cdc40d614394508e21d62bb3f, type: 3}
-  m_PrefabInstance: {fileID: 8079017323400081856}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &3232827769131073873 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6684222320421023889, guid: 3db3d81cdc40d614394508e21d62bb3f, type: 3}
-  m_PrefabInstance: {fileID: 8079017323400081856}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &3561928191765857799 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4715530094038906823, guid: 3db3d81cdc40d614394508e21d62bb3f, type: 3}
-  m_PrefabInstance: {fileID: 8079017323400081856}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &4738162041293587465 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -5629717002618243639, guid: 3db3d81cdc40d614394508e21d62bb3f, type: 3}
-  m_PrefabInstance: {fileID: 8079017323400081856}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &6201800778004515898 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2742506911999884794, guid: 3db3d81cdc40d614394508e21d62bb3f, type: 3}
-  m_PrefabInstance: {fileID: 8079017323400081856}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &6377167858972547959 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -6296543473782363465, guid: 3db3d81cdc40d614394508e21d62bb3f, type: 3}
-  m_PrefabInstance: {fileID: 8079017323400081856}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &6704285498516584209 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -5975142762673142063, guid: 3db3d81cdc40d614394508e21d62bb3f, type: 3}
-  m_PrefabInstance: {fileID: 8079017323400081856}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &8135183579731488753 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 70814245616442929, guid: 3db3d81cdc40d614394508e21d62bb3f, type: 3}
-  m_PrefabInstance: {fileID: 8079017323400081856}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8616747342713869867 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3db3d81cdc40d614394508e21d62bb3f, type: 3}
@@ -270,7 +230,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 1.64
-  m_Radius: 0.3
+  m_Radius: 0.31
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -319,11 +279,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animBlendSpeed: 10
-  CameraRoot: {fileID: 9125277757592881381}
+  CameraRoot: {fileID: 0}
   CameraRootNoShake: {fileID: 6538192736237089801}
   Camera: {fileID: 0}
-  CameraOffset: {x: 0, y: 0.1, z: 0.3}
-  runCameraOffset: {x: 0, y: 0, z: 0.15}
+  CameraOffset: {x: 0, y: 0.1, z: 0.1}
+  runCameraOffset: {x: 0, y: 0, z: 0.1}
   UpperLimit: -40
   BottomLimit: 70
   mouseSensitivity: 0.5
@@ -383,7 +343,7 @@ MonoBehaviour:
   playerCamera: {fileID: 0}
   interactionDistance: 3
   showOutline: 1
-  interactionRadius: 0.5
+  interactionRadius: 0.03
 --- !u!114 &1950416600736188546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -513,7 +473,7 @@ MonoBehaviour:
   UseRigidbodyVelocityForIsMoving: 0
   UseRaycastsForIsGrounded: 0
   SlidingParameter: 
-  SpineBone: {fileID: 3082246360902130481}
+  SpineBone: {fileID: 0}
   ChestBone: {fileID: 0}
   RagdolledParameter: 
   SwingHelper: 0
@@ -694,9 +654,9 @@ MonoBehaviour:
     LegStretchMultiplier: 1
     CustomLegAnimating: {fileID: 0}
     FootPitchOffset: 0
-    BoneStart: {fileID: 6377167858972547959}
-    BoneMid: {fileID: 4738162041293587465}
-    BoneEnd: {fileID: 6201800778004515898}
+    BoneStart: {fileID: 0}
+    BoneMid: {fileID: 0}
+    BoneEnd: {fileID: 0}
     Side: 1
     OppositeLegIndex: 1
     RaycastPrecision: 0
@@ -725,9 +685,9 @@ MonoBehaviour:
     LegStretchMultiplier: 1
     CustomLegAnimating: {fileID: 0}
     FootPitchOffset: 0
-    BoneStart: {fileID: 3561928191765857799}
-    BoneMid: {fileID: 3232827769131073873}
-    BoneEnd: {fileID: 6704285498516584209}
+    BoneStart: {fileID: 0}
+    BoneMid: {fileID: 0}
+    BoneEnd: {fileID: 0}
     Side: 2
     OppositeLegIndex: 0
     RaycastPrecision: 0
@@ -970,21 +930,21 @@ MonoBehaviour:
   _EditorExtraCategory: 0
   setupPose:
     MainHipsPose:
-      SourceTransform: {fileID: 8135183579731488753}
+      SourceTransform: {fileID: 0}
       RotationInRoot: {x: -0.0000006854534, y: 0.00000003192804, z: 0.000002069945, w: 1.0000001}
       PositionInRoot: {x: -0.0000016081613, y: 0.9446343, z: -0.02884692}
     HipsPoses: []
     LegPoses:
     - UpperLegPose:
-        SourceTransform: {fileID: 6377167858972547959}
+        SourceTransform: {fileID: 0}
         RotationInRoot: {x: -0.007156696, y: 0.07844639, z: 0.99689066, w: 0.0020913833}
         PositionInRoot: {x: -0.07959019, y: 0.9315191, z: -0.03836274}
       LowerLegPose:
-        SourceTransform: {fileID: 4738162041293587465}
+        SourceTransform: {fileID: 0}
         RotationInRoot: {x: -0.0013405393, y: -0.08288354, z: 0.99655765, w: 0.0013414229}
         PositionInRoot: {x: -0.08178733, y: 0.5143257, z: 0.027715564}
       AnklePose:
-        SourceTransform: {fileID: 6201800778004515898}
+        SourceTransform: {fileID: 0}
         RotationInRoot: {x: -0.035429075, y: 0.59688014, z: 0.8007272, w: 0.03627056}
         PositionInRoot: {x: -0.08284358, y: 0.08052516, z: -0.04489638}
       FeetPose:
@@ -992,15 +952,15 @@ MonoBehaviour:
         RotationInRoot: {x: 0, y: 0, z: 0, w: 0}
         PositionInRoot: {x: 0, y: 0, z: 0}
     - UpperLegPose:
-        SourceTransform: {fileID: 3561928191765857799}
+        SourceTransform: {fileID: 0}
         RotationInRoot: {x: -0.0071613975, y: -0.07857746, z: -0.99688023, w: 0.00209526}
         PositionInRoot: {x: 0.07958709, y: 0.93151957, z: -0.038362682}
       LowerLegPose:
-        SourceTransform: {fileID: 3232827769131073873}
+        SourceTransform: {fileID: 0}
         RotationInRoot: {x: -0.0013474647, y: 0.08294457, z: -0.9965525, w: 0.001334378}
         PositionInRoot: {x: 0.08178807, y: 0.5143434, z: 0.027825505}
       AnklePose:
-        SourceTransform: {fileID: 6704285498516584209}
+        SourceTransform: {fileID: 0}
         RotationInRoot: {x: -0.035433866, y: -0.59685457, z: -0.8007462, w: 0.0362676}
         PositionInRoot: {x: 0.082838275, y: 0.080551684, z: -0.044841602}
       FeetPose:
@@ -1013,7 +973,7 @@ MonoBehaviour:
   FeetYOffset: 0
   FeetLengthAdjust: 0
   baseTransform: {fileID: 0}
-  Hips: {fileID: 8135183579731488753}
+  Hips: {fileID: 0}
   ScaleReferenceMode: 3
   finalScaleReference: 0.9052223
   finalScaleReferenceSqrt: 0.1
@@ -1046,8 +1006,3 @@ MonoBehaviour:
   LegsAnimatorBlend: 1
   _Editor_DefaultModuleOnStart: {fileID: 11400000, guid: 7d9bd86d54a7a594cb1793f9533e2e00, type: 2}
   _Editor_LegHelperModule: {fileID: 11400000, guid: 0645fbea8059aec47aa6ae9d2c93c1d4, type: 2}
---- !u!4 &9125277757592881381 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1062023463908538661, guid: 3db3d81cdc40d614394508e21d62bb3f, type: 3}
-  m_PrefabInstance: {fileID: 8079017323400081856}
-  m_PrefabAsset: {fileID: 0}

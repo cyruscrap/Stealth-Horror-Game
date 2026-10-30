@@ -12,5 +12,6 @@ public class InitMenu : MonoBehaviour
     public void OnAnimationEnds()
     {
         mainMenu?.ShowOrHideInitMenu(false);
+        gameObject.SetActive(false);
     }
 }

@@ -85,6 +85,7 @@ public class GameScenario : IInitializable, IDisposable
         //_itemSpawner.SpawnItemsForDay(currentDay.itemsToSpawn, currentDay.enableOutline, currentDay.outlineColor, currentDay.outlineWidth, _mainGameRoot);
 
         _eventManager.ReportPhaseStart(_currentPhase);
+        _worldSaveGameManager.NotifyStateChanged();
         ScreenFaderTransition.Instance.FadeFromBlack();
     }
 
@@ -138,7 +139,6 @@ public class GameScenario : IInitializable, IDisposable
         Time.timeScale = 0f;
 
         SaveGame();
-        _playerUIManager.HideTaskListView();
         _playerController.EnterCutsceneMode();
 
         InteractionPromptManager.Instance.HideComment();

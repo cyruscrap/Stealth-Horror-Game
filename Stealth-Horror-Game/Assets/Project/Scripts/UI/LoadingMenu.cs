@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoadingMenu : MonoBehaviour
 {
@@ -50,6 +51,13 @@ public class LoadingMenu : MonoBehaviour
 
     private IEnumerator AnimateTextTyping()
     {
+        // 1. Запускаем асинхронную загрузку сцены в фоне
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(mainSceneName);
+
+        // Запрещаем игре переключать сцену сразу, как только она загрузится
+        asyncLoad.allowSceneActivation = false;
+
+        // 2. Проигрываем твою анимацию печати, пока сцена грузится
         textMeshPro.text = "";
         foreach (char letter in fullText)
         {
@@ -57,7 +65,21 @@ public class LoadingMenu : MonoBehaviour
             yield return new WaitForSecondsRealtime(typeDelay);
         }
 
-        ScreenFaderTransition.Instance.FadeToBlack(mainSceneName);
+        // 3. Ждем, пока сцена загрузится хотя бы на 90% (при allowSceneActivation = false прогресс замирает на 0.9)
+        // Если сцена загрузилась быстрее анимации — этот цикл пропустится моментально.
+        // Если сцена грузится дольше — игра подождет.
+        while (asyncLoad.progress < 0.9f)
+        {
+            yield return null;
+        }
+
+        // 4. Когда и анимация, и сцена готовы, делаем затемнение.
+        // Передаем null вместо имени сцены, так как мы уже загрузили её вручную.
+        // В коллбэке afterFade разрешаем активацию сцены, чтобы произошло переключение.
+        ScreenFaderTransition.Instance.FadeToBlack(null, afterFade: () =>
+        {
+            asyncLoad.allowSceneActivation = true;
+        });
     }
 
     /// <summary>
